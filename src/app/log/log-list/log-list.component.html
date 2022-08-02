@@ -1,0 +1,45 @@
+<!-- lista de logs -->
+<div class="container-fluid">
+  <h3 class="configMargen">Lista de Logs</h3>
+  <div class="card configMargen">
+    <p-table #dt1 [value]="logs" dataKey="id" responsiveLayout="scroll" [responsive]="true" selectionMode="single"
+      [globalFilterFields]="['conteudo', 'vezes']" [paginator]="true" [rows]="30" [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[30,50,100]" currentPageReportTemplate="{last} de {totalRecords} itens" 
+      p-datatable-loading-icon="pi-spinner">
+      <ng-template pTemplate="caption">
+        <div class="p-d-flex">
+          <span class="p-input-icon-left p-ml-auto">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (input)="dt1.filterGlobal($any($event).target.value, 'contains')"
+              placeholder="Pesquise um log" />
+          </span>
+          <button type="button" pButton label="Limpar" class="p-button-outlined" icon="pi pi-filter-slash"
+            (click)="clear(dt1)"></button>
+          <button type="button" pButton label="inserir Log" class="p-button-sm" style="float: right;"
+          [routerLink]="['/cadastro-log']"></button>  
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="conteudo">Conteúdo <p-sortIcon field="conteudo"></p-sortIcon>
+          </th>
+          <th pSortableColumn="vezes">Nº Vezes <p-sortIcon field="vezes"></p-sortIcon>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-log>
+        <tr>
+          <td>{{log.conteudo}}</td>
+          <td>{{log.vezes}}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">Nenhum log cadastrado.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+</div><!-- and -->

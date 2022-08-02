@@ -1,0 +1,28 @@
+.nav-link {
+  display: inline;
+}
+
+  /*Config reutilizáveis*/
+  .configHome1 {
+    color: #075cb2;
+  }
+
+  .configMargen {
+    margin-top: 1.5rem;
+}
+
+/*filtro da tabela*/
+.p-button.p-button-outlined {
+  box-shadow: inset 0 0 0 0px;
+}
+
+.configCampoFiltro{
+  height: 3rem !important
+}
+
+/*end*/
+
+
+
+
+

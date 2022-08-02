@@ -1,0 +1,4 @@
+<button type="button" pButton icon="pi pi-bars" (click)="menu.toggle($event)" 
+   class="configButtonMenu float-left"></button>
+
+   <p-menu #menu [popup]="true" appendTo="body" [model]="itens"></p-menu>

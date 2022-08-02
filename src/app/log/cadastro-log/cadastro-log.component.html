@@ -1,0 +1,67 @@
+<div class="container">
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="f.form.valid && salvar(f);" novalidate
+        keydown="return event.keyCode === 13">
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <h4>Inserir Log</h4>
+                <div class="form-group row">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="button" pButton label="Visualizar Log" class="p-button-sm p-button-warning"
+                            style="float: left;" [routerLink]="['/lista-log']"></button>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="onReset(f)">
+                            {{editando ? 'Cancelar' : 'Novo Log'}}</button>
+                        <button type="submit" class="btn btn-success btn-sm" [disabled]="!f.form.valid">
+                            Salvar Alterações</button>
+                        <button type="button" class="btn btn-primary btn-sm">Ler Arquivo</button>
+                    </div>
+                </div>
+                <p-card>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="p-inputgroup col-md-10">
+                                <span class="p-float-label">
+                                    <input id="float-input" type="text" pInputText name="conteudo" minlength="3"
+                                        maxlength="250" class="col-md-12" [required]="true" [(ngModel)]="log.conteudo"
+                                        #conteudo="ngModel">
+                                    <label for="float-input">Conteúdo</label>
+                                </span>
+                            </div>
+                            <small class="p-error" *ngIf="conteudo.errors?.required && conteudo.dirty">
+                                Por favor digite o conteúdo</small>
+                            <small class="p-error" *ngIf="conteudo.errors?.minlength && conteudo.dirty">
+                                Mínimo de {{ conteudo.errors?.minlength?.requiredLength }} caracteres!</small>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="p-inputgroup col-md-2">
+                                <span class="p-float-label">
+                                    <input id="float-input" type="text" pInputText name="vezes" minlength="1"
+                                        maxlength="10" class="col-md-5" [required]="true" [(ngModel)]="log.vezes"
+                                        #vezes="ngModel" pattern='^[0-9]+(\.[0-9]*){0,1}$'>
+                                    <label for="float-input">Nº Vezes</label>
+                                </span>
+                            </div>
+                            <small class="p-error" *ngIf="vezes.errors?.required && vezes.dirty">
+                                Por favor digite o número de vezes</small>
+                            <small class="p-error" *ngIf="vezes.errors?.pattern && vezes.dirty ">
+                                Digite apenas números.</small>
+                        </div>
+                    </div>
+                </p-card>
+                <div class="configMargen">
+                    <h4>Inserir pelo arquivo</h4>
+                        <p-fileUpload name="uploadedFiles[]" url="./cadastro-log" (onUpload)="onUpload($event)" 
+                           accept="image/*" [maxFileSize]="1000000">
+                            <ng-template pTemplate="content">
+                                <ul *ngIf="uploadedFiles.length">
+                                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                                </ul>
+                            </ng-template>
+                        </p-fileUpload>
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+</div>

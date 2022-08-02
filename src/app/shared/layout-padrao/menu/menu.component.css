@@ -1,0 +1,9 @@
+.configButtonMenu{
+    background-color: #033f7a;
+    opacity:0.8;
+    margin-bottom: 1rem !important;
+}
+/* :host ::ng-deep .p-menu.p-menu-overlay {
+    background: #033f7a !important
+} */
+  

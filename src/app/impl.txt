@@ -1,0 +1,12 @@
+<div class="container">
+    <form #f="ngForm">
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <h4 class="configHome1">Consultar Sistemas</h4>
+                <p-card>
+                    <p>Home</p>
+                </p-card>
+            </div>
+        </div>
+    </form>
+</div>

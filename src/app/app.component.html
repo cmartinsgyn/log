@@ -1,0 +1,22 @@
+<!-- LAYOUT PRINCIPAL -->
+<div id="wrapper">
+
+  <!-- cabeçalho -->
+  <div>
+    <app-header></app-header>
+  </div>
+
+  <!-- corpo: paginas dinâmicas da app -->
+  <div class="container-fluid">
+      <div class="col-lg-12">
+        <router-outlet></router-outlet>
+        <p-toast></p-toast>
+      </div>
+  </div>
+
+  <!-- footer -->
+  <app-footer></app-footer>
+
+
+</div><!-- end -->
+

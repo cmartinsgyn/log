@@ -1,0 +1,16 @@
+/* Configurações scss globais */
+
+.btn-primary {
+    --bs-btn-color: #fff !important;
+    --bs-btn-bg: #033f7a !important;
+    --bs-btn-border-color: #033f7a !important;
+    // margin-left: 0.8rem !important;
+}
+
+.container {
+    padding-top: 3rem;
+}
+
+.configMargen {
+    margin-top: 1rem !important;
+}

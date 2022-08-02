@@ -1,0 +1,37 @@
+.nav{
+  background-color: #033f7a;
+  opacity:0.8;
+  right: 0;
+  left: 0;
+  height: 1.7rem;
+}
+
+.alignMenu{
+  height: 2.9rem !important;
+}
+.navRodape{
+  height: 1.3rem !important;
+  background-color: #012f5e !important;
+}
+
+/* icones */
+.pi {
+  color:#f0f9ff;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/*menu*/
+:host ::ng-deep .pi-bars:before {
+  content: "\e91d";
+  font-size: 1.5rem;
+}
+
+.configAcessos1 {
+  color: #f0f9ff;
+  padding-left: 1rem;
+}
+.configAcessos2 {
+  font-size: 0.8rem;
+  margin-top: -1.5rem;
+}
