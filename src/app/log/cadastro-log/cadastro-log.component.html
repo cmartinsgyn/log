@@ -11,8 +11,7 @@
                         <button type="button" class="btn btn-danger btn-sm" (click)="onReset(f)">
                             {{editando ? 'Cancelar' : 'Novo Log'}}</button>
                         <button type="submit" class="btn btn-success btn-sm" [disabled]="!f.form.valid">
-                            Salvar Alterações</button>
-                        <button type="button" class="btn btn-primary btn-sm">Ler Arquivo</button>
+                            Salvar Alterações</button>                       
                     </div>
                 </div>
                 <p-card>
@@ -50,14 +49,9 @@
                 </p-card>
                 <div class="configMargen">
                     <h4>Inserir pelo arquivo</h4>
-                        <p-fileUpload name="uploadedFiles[]" url="./cadastro-log" (onUpload)="onUpload($event)" 
-                           accept="image/*" [maxFileSize]="1000000">
-                            <ng-template pTemplate="content">
-                                <ul *ngIf="uploadedFiles.length">
-                                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-                                </ul>
-                            </ng-template>
-                        </p-fileUpload>
+                    <input type="file" class="file-input" (change)="onUpload($event)" #fileUpload> 
+                    <button type="button" class="btn btn-primary btn-sm" (click)="processarArquivo()">Processar Arquivo</button>                  
+                   
                 </div>
 
             </div>
