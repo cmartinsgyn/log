@@ -1,4 +1,34 @@
 # Sistema
+ Resumo: Angular 12.1.1, node 14.17
+ Gerar npm install e todas bibliotecas serão baixadas
+
+ # Caso use docker
+  usar dockerfile:       
+# ----------------------------------------------------
+FROM node:14.17.1-alpine as node-angular-cli
+#Linux setup
+RUN apk update \
+  && apk add --update alpine-sdk \
+  && apk add bash \ 
+  && apk del alpine-sdk \
+  && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
+  && npm cache verify \
+  && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
+
+#Ver a versão adequada ao seu projeto...
+RUN npm i -g @angular/cli@12.1.1
+
+#gerador arquivo pdf
+RUN npm i jspdf 
+# ----------------------------------------------------
+- Atualizar o npm
+- setar o volume do container para a pasta do computador
+- porta padrao: 4200
+Obs: talves, para rodar o ng serve, necessite digitar o comando como no exemplo:
+ ng serve --host 172.17.0.2 (que o id variável do container verificado com ifconfig)   
+
+--- end docker --
+   # Orientações Padrão
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
 
