@@ -26,7 +26,7 @@ export class LogListComponent implements OnInit {
 
   listar(){
     this.servico.findAll().subscribe(
-      (data) => this.logs = data.slice().reverse(),
+      (data) => this.logs = data,
       (error) => this.errorHandler.handle(`Ops! Não foi possivel buscar o(s) log(s). ${error}`)
     );
   }

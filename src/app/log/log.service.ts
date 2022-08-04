@@ -14,15 +14,6 @@ export class LogService extends CrudService<Log, number>{
    }
 
   salvarPeloArquivo(formData: FormData): Observable<any> {
-    // console.log(`${this.baseUrl}/arquivoLog`)
-    // //return this._http.post(`${this.baseUrl}${this._endPoint}/arquivoLog`, formData);
-    // const upload$ = this._http.post(`${this.baseUrl}/arquivoLog`, formData, {
-    //   reportProgress: true,
-    //   observe: 'events'
-    // })
-    //   .pipe(
-    //     finalize(() => true)
-    //   );
     return this._http.post<any>(`${this.baseUrl}/arquivoLog`, formData);
   }
      

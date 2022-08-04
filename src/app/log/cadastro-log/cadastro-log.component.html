@@ -49,11 +49,19 @@
                 </p-card>
                 <div class="configMargen">
                     <h4>Inserir pelo arquivo</h4>
-                    <input type="file" class="file-input" (change)="onUpload($event)" #fileUpload> 
-                    <button type="button" class="btn btn-primary btn-sm" (click)="processarArquivo()">Processar Arquivo</button>                  
-                   
+                    <div class="d-grid gap-2 d-md-flex">
+                        <input type="file" class="file-input" (change)="onUpload($event)" #fileUpload style="width: 24rem;"> 
+                        <button type="button" class="btn btn-primary btn-sm" (click)="processarArquivo()">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                            *ngIf="progress == true"></span>
+                            Processar Arquivo</button>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="cancelUpload()"
+                            *ngIf="progress">Cancelar</button>
+                    </div> 
                 </div>
+                <span style="color: blue;">insira apenas arquivos de no máximo 5Mb</span>
 
+                
             </div>
         </div>
 

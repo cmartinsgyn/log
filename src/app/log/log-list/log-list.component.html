@@ -1,11 +1,11 @@
 <!-- lista de logs -->
 <div class="container-fluid">
   <h3 class="configMargen">Lista de Logs</h3>
-  <div class="card configMargen">
+  <div class="card ">
     <p-table #dt1 [value]="logs" dataKey="id" responsiveLayout="scroll" [responsive]="true" selectionMode="single"
-      [globalFilterFields]="['conteudo', 'vezes']" [paginator]="true" [rows]="30" [showCurrentPageReport]="true"
-      [rowsPerPageOptions]="[30,50,100]" currentPageReportTemplate="{last} de {totalRecords} itens" 
-      p-datatable-loading-icon="pi-spinner">
+      [globalFilterFields]="['conteudo', 'vezes']" [paginator]="true" [rows]="15" [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[15,50,100]" currentPageReportTemplate="{last} de {totalRecords} itens" 
+      p-datatable-loading-icon="pi-spinner" allowUnsorting="true" sortMode="single">
       <ng-template pTemplate="caption">
         <div class="p-d-flex">
           <span class="p-input-icon-left p-ml-auto">
@@ -24,7 +24,7 @@
         <tr>
           <th pSortableColumn="conteudo">Conteúdo <p-sortIcon field="conteudo"></p-sortIcon>
           </th>
-          <th pSortableColumn="vezes">Nº Vezes <p-sortIcon field="vezes"></p-sortIcon>
+          <th pSortableColumn="vezes">Nº Vezes <p-sortIcon field="vezes" sortOrder="asc"></p-sortIcon>
           </th>
         </tr>
       </ng-template>

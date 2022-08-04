@@ -1,3 +1,4 @@
+import { HttpEventType } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -22,10 +23,8 @@ export class CadastroLogComponent implements OnInit {
   editando = false
   fileName = ''
   file!: File;
-  habUpload = true
-  uploadProgress!: number;
-  uploadSub!: Subscription;
-
+  progress = false
+  
   constructor(
     private router: Router,
     private servico: LogService,
@@ -38,26 +37,27 @@ export class CadastroLogComponent implements OnInit {
 
   onUpload(event: any) {
     this.file = event.target.files[0];
+    if(this.file.type != 'text/x-log'){
+      this.errorHandler.handle('Formato de arquivo de ser txt / log')
+    }
   }
   processarArquivo() {
+    this.progress = true
     if (this.file) {
 
       this.fileName = this.file.name;
       const formData = new FormData();
       formData.append("arquivo", this.file);
 
-     // const upload$ = this.servico.salvarPeloArquivo(formData)
-     this.servico.salvarPeloArquivo(formData).subscribe(
-      (adicionado) => {
-        this.sharedService.sweetAlertSucesso(`foi no back`);
-      },
-      (error) =>
+      this.servico.salvarPeloArquivo(formData).subscribe(
+        () => {
+          this.progress = false
+          this.sharedService.sweetAlertSucesso(`Arquivo no banco salvo!`);
+        }, (error) =>
         this.errorHandler.handle(error)
-    );
-     
-     
+      );
     }//fim método
-  
+
 
   }//end
 
@@ -96,13 +96,7 @@ export class CadastroLogComponent implements OnInit {
   }
 
   cancelUpload() {
-    this.uploadSub.unsubscribe();
-    this.reset();
-  }
-
-  reset() {
-    this.uploadProgress = 0
-    this.uploadSub = new Subscription
+    this.progress = false;
   }
 
 }//end class
